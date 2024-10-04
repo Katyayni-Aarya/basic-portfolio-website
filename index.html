@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Page title that appears in browser tab -->
+    <title>Katyayni's Website</title>
+  </head>
+  <body>
+    <!-- Splash section - The first thing visitors see -->
+
+    <section id="splash-container">
+      <div id="splash-text">
+        <!-- Main introduction -->
+        <span>Hello! I am Katyayni Aarya</span>
+
+        <!-- Dynamic typing effect section -->
+        <section id="typing-container"> <!-- meta labels very important the more the better-->
+          <span>I am interested in <span id="typing-text"></span></span>
+        </section>
+
+        <!-- Social media links section -->
+        <section id="connection-container">
+          <span>connect with me</span>
+          <div id="connection-links">
+            <!-- LinkedIn link -->
+            <a href="https://linkedin.com/in/katyayni-aarya-498122311/" target="_blank">
+              <img src="/assets/linkedin.svg" alt="linkedin" />
+            </a>
+            <!-- GitHub link -->
+            <a href="https://github.com/Katyayni-Aarya/" target="_blank"> 
+              <img src="/assets/github.svg" alt="github" />
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Down arrow indicating more content below -->
+      <img src="/assets/Downward-Arrow.webp" alt="down arrow" id="down-arrow" />
+    </section>
+
+    <!-- Interests section - Displaying different areas of interest -->
+    <section id="interests-container">
+      <div>
+        <div class="interest-header">Deep Learning</div>
+        <span>
+          <span>
+            Deep learning feels like an extension of creativity to me. 
+            It's a tool that lets me explore the depths of data and uncover hidden patterns, 
+            enabling innovation beyond the visible surface. With deep learning, I aim to create 
+            intelligent solutions that not only make people's lives easier.
+        </span>
+        
+        </span>
+      </div>
+      <div class="line"></div>
+      <div>
+        <div class="interest-header">Cyber Security</div>
+        <span>
+          I am passionate about exploring innovative strategies to counteract 
+          cyber threats, making the digital world a safer place for everyone. 
+          My goal is to develop solutions that enhance security and raise awareness, 
+          fostering a culture of vigilance and proactive defense in the face of evolving 
+          cyber risks.
+      </span>
+      
+
+      </div>
+      <div class="line"></div>
+      <div>
+        <div class="interest-header">Writing</div>
+        <span>
+          Writing is an expression of creativity and thought, allowing me to 
+          convey ideas and emotions in unique ways. Whether through storytelling, 
+          poetry, or informative content, I enjoy crafting narratives that resonate 
+          with readers. My aim is to inspire and provoke thought, using the power of 
+          words to create connections and foster understanding in a diverse world. 
+      </span>
+      
+      </div>
+    </section>
+
+
+
+
+    <!-- Projects section - Showcasing personal projects -->
+    <section id="projects-container">
+      <span>Projects</span>
+
+      <div id="projects">
+
+        <div>
+          <div class="project-title">Judgement.</div>
+          <span>
+           A program which judges you and the softwares you use
+          </span>
+          <div class="project-details">
+            <a href="" target="_blank"
+              >I am looking at you, very pointedly (u no visit)</a
+            >
+          </div>
+        </div>
+        <!-- TechnoVIT 24 project -->
+        <div>
+          <div class="project-title">Mother</div>
+          <span>
+            Program which generates random lines from the animated horror film Mother by Product.
+          </span>
+          <div class="project-details">
+            <a href="">no visiting rights</a>
+          </div>
+        </div>
+        <!-- Pseudocode project -->
+        <div>
+          <div class="project-title">Guess by CharlieXCX</div>
+          <span>
+            Hot and Cold
+          </span>
+          <div class="project-details">
+            <a href="">will add later</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+    
+    <!-- Footer section -->
+    <footer>
+      <span>made with &lt;3 </span>
+      <span>
+        <strong>&copy; 2024 Katyayni Aarya</strong>
+      </span>
+    </footer>
+
+  <!-- JavaScript for the typing effect -->
+  <script>
+    // Get the element where the typing effect will occur
+    const typingElement = document.getElementById("typing-text");
+
+    // Array of texts to display in the typing effect
+    const typeArray = [
+      "Deep Learning",
+      "Product Development",
+      "Writing",
+      "Cybersecurity",
+    ];
+
+    // Current index of the *character* in the current word
+    let index = 0; 
+
+    // We may either be adding characters to the screen or removing them
+    let isAdding = true; 
+
+    // Index of the current word in typeArray
+    let typeIndex = 0;
+
+    function playAnim() {
+
+      // The function within this runs after a certain time
+      setTimeout(
+
+        function () {
+          
+          // Put all characters upto the current index in the given word
+          // which is being typed out
+          typingElement.innerText = typeArray[typeIndex].slice(0, index);
+
+          if (isAdding) {
+
+            // If we reach the end of the current word while adding characters
+            if (index >= typeArray[typeIndex].length) {
+
+              // We will no longer add characters from next call onwards
+              isAdding = false;
+
+              // Call the function again after some pause (timeout)
+              setTimeout(function () {
+                playAnim();
+              }, 500);
+
+              return;
+
+            } else {
+
+              // We didn't reach the end of current word
+              // So simply increase the index to add the next character
+              index++;
+            }
+
+          } else {
+            // If we're removing characters
+
+            // And if we reach the start of the current word
+            if (index === 0) {
+
+              // We removed all the characters, so we will add
+              // characters from next call onwards
+              isAdding = true;
+
+              // Since the current word was finished, we will add characters
+              // to the next word from next call onwards
+              typeIndex++;
+
+              // If we have already completed all the words in the array
+              // we will start from the first word again
+              if (typeIndex >= typeArray.length) {
+                typeIndex = 0;
+              }
+
+            } else {
+
+              // If we haven't reached the start of the current word yet
+              // Then simply remove the word at the current index
+              index--;
+            }
+          }
+
+          // Call this function again (to repeat the process from where we left)
+          playAnim();
+        },
+
+        // This just tells the timeout function to wait for 120ms before running
+        120
+      );
+    }
+
+    // LET THE PARTY BEGIN!
+    playAnim();
+  </script>
+  </body>
+</html>
